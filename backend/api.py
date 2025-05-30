@@ -1,30 +1,28 @@
-# backend/api.py
+# api.py
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import random
 
-# Simulación de análisis IA de XOXO
+# Simulación básica de detección IA
 def analizar_video_por_enlace(url: str) -> str:
-    # Lógica de ejemplo simulada:
     if "deepfake" in url.lower():
         return "IA"
     else:
-        return random.choice(["real", "IA"])  # Aquí irá el análisis real
+        return random.choice(["real", "IA"])
 
-# Definimos modelo de entrada
+# Modelo de datos
 class VideoLink(BaseModel):
     url: str
 
-# Inicializamos la app
+# Inicializar app
 app = FastAPI()
 
-# from fastapi.middleware.cors import CORSMiddleware
-
+# CORS para permitir peticiones del frontend en GitHub Pages
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://thrumanshow.github.io"],  # Reemplaza con tu dominio de frontend
+    allow_origins=["https://thrumanshow.github.io"],  # Cambia si usás otro dominio
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -45,8 +43,9 @@ async def analizar_video(link: VideoLink):
         "estado": resultado,
         "mensaje": mensaje,
         "color": color
-      }
-# Esto es opcional en FastAPI, pero útil para desarrollo local
+    }
+
+# Para desarrollo local
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
