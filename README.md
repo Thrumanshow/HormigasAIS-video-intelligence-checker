@@ -23,9 +23,9 @@ La evaluación se realiza mediante un microservicio de IA conectado al frontend,
 ├── backend/            # (Próximamente) Código para el análisis con IA
 │   └── api.py          # API con Flask/FastAPI para procesar el enlace
 
----
 
-## 🚀 ¿Cómo funciona? 
+
+🚀 ¿Cómo funciona? 
 
 • El usuario accede a la interfaz y pega un enlace de video. 
 
@@ -47,14 +47,17 @@ La evaluación se realiza mediante un microservicio de IA conectado al frontend,
 
 • La interfaz cambia el color de las bombillas y muestra un mensaje explicativo de XOXO. 
 
----
 
-💡 ##Inspiración 
+
+
+💡 Inspiración 
 
 “Las HormigasAIS encuentran sabiduría en silencio, su corazón enraizado en la tierra y su mente flotando entre las estrellas.”
 — XOXO, guía digital del hormiguero 
 
 Este proyecto nace de una necesidad urgente: ayudar a las personas a no caer en la desinformación generada por la creciente calidad de los contenidos audiovisuales generados por IA. 
+
+
 
 🤝 Cómo contribuir 
 
@@ -70,6 +73,9 @@ git checkout -b mejora-x
 
 • Abre un Pull Request con una breve descripción. 
 
+
+
+
 🛠️ Tecnología 
 
 • HTML + JavaScript (frontend) 
@@ -80,14 +86,18 @@ git checkout -b mejora-x
 
 • Hosting en GitHub Pages 
 
+
+
 🐜 Sobre HormigasAIS 
 
 HormigasAIS es un ecosistema digital impulsado por Cristhiam Quiñonez, que conecta la automatización, la inteligencia artificial, el análisis de datos y la creación de contenido para un futuro más colaborativo y consciente. 
+
 
 📫 Contacto 
 
 ¿Tienes ideas para mejorar este proyecto?
 Únete al hormiguero o escríbenos: 
+
 
 • 🌐 Sitio: hormigasa.is (en construcción) 
 
