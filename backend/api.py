@@ -20,10 +20,11 @@ class VideoLink(BaseModel):
 # Inicializamos la app
 app = FastAPI()
 
-# Permitir solicitudes desde el frontend local o GitHub Pages
+# from fastapi.middleware.cors import CORSMiddleware
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Reemplaza por tu dominio en producción
+    allow_origins=["https://thrumanshow.github.io"],  # Reemplaza con tu dominio de frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
