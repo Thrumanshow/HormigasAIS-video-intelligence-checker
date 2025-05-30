@@ -45,3 +45,7 @@ async def analizar_video(link: VideoLink):
         "mensaje": mensaje,
         "color": color
       }
+# Esto es opcional en FastAPI, pero útil para desarrollo local
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
