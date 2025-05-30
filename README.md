@@ -23,7 +23,9 @@ La evaluación se realiza mediante un microservicio de IA conectado al frontend,
 ├── backend/            # (Próximamente) Código para el análisis con IA
 │   └── api.py          # API con Flask/FastAPI para procesar el enlace
 
-🚀 ¿Cómo funciona? 
+---
+
+## 🚀 ¿Cómo funciona? 
 
 • El usuario accede a la interfaz y pega un enlace de video. 
 
@@ -45,7 +47,9 @@ La evaluación se realiza mediante un microservicio de IA conectado al frontend,
 
 • La interfaz cambia el color de las bombillas y muestra un mensaje explicativo de XOXO. 
 
-💡 Inspiración 
+---
+
+💡 ##Inspiración 
 
 “Las HormigasAIS encuentran sabiduría en silencio, su corazón enraizado en la tierra y su mente flotando entre las estrellas.”
 — XOXO, guía digital del hormiguero 
