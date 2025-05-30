@@ -1,134 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HormigasAIS Video Checker</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f4f8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-    }
-
-    h1 {
-      color: #0b355d;
-    }
-
-    .container {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      padding: 2rem;
-      max-width: 600px;
-      width: 100%;
-      text-align: center;
-    }
-
-    input[type="text"] {
-      width: 90%;
-      padding: 10px;
-      margin-bottom: 1rem;
-      font-size: 16px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-    }
-
-    button {
-      background-color: #0b355d;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .result {
-      margin-top: 2rem;
-      font-size: 24px;
-    }
-
-    .bulb {
-      font-size: 40px;
-      margin: 0 10px;
-      opacity: 0.3;
-      transition: opacity 0.3s, color 0.3s;
-    }
-
-    .green {
-      color: #44d17a;
-      opacity: 1;
-    }
-
-    .blue {
-      color: #3aaaff;
-      opacity: 1;
-    }
-
-    .xoxo-message {
-      margin-top: 1rem;
-      font-style: italic;
-      color: #333;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HormigasAIS Video Intelligence Checker</title>
 </head>
 <body>
-  <div class="container">
-    <h1>🧠 HormigasAIS Video Checker</h1>
-    <p>Pega el enlace del video y deja que XOXO lo evalúe.</p>
-
-    <input type="text" id="videoUrl" placeholder="https://..." />
-    <br />
-    <button onclick="analyzeVideo()">Analizar</button>
-
-    <div class="result">
-      <span id="bulb-green" class="bulb">💡</span>
-      <span id="bulb-blue" class="bulb">💡</span>
-    </div>
-
-    <div class="xoxo-message" id="xoxoMessage"></div>
-  </div>
+  <h1>HormigasAIS Video Intelligence Checker</h1>
+  <form id="videoForm">
+    <label for="videoUrl">Video URL:</label>
+    <input type="url" id="videoUrl" name="videoUrl" required />
+    <button type="submit">Analyze</button>
+  </form>
+  <pre id="result"></pre>
 
   <script>
-    async function analyzeVideo() {
-      const url = document.getElementById('videoUrl').value;
-      const greenBulb = document.getElementById('bulb-green');
-      const blueBulb = document.getElementById('bulb-blue');
-      const messageBox = document.getElementById('xoxoMessage');
+    const form = document.getElementById("videoForm");
+    const result = document.getElementById("result");
 
-      // Reset visuals
-      greenBulb.classList.remove('green');
-      blueBulb.classList.remove('blue');
-      messageBox.textContent = "⏳ Analizando con XOXO...";
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const videoUrl = document.getElementById("videoUrl").value;
 
       try {
-        const response = await fetch("https://tu-backend-api/aianalysis", {
+        const response = await fetch("https://xoxo-checker.onrender.com/analyze", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url })
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url: videoUrl }),
         });
 
-        const data = await response.json();
-
-        if (data.resultado === "real") {
-          greenBulb.classList.add('green');
-          messageBox.textContent = "XOXO: Este video parece auténtico. 🎥✨";
-        } else if (data.resultado === "IA") {
-          blueBulb.classList.add('blue');
-          messageBox.textContent = "XOXO: Este video tiene señales generadas por IA. 🤖🌀";
-        } else {
-          messageBox.textContent = "XOXO: No pude determinar la autenticidad. Intenta con otro enlace.";
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
         }
 
+        const data = await response.json();
+        result.textContent = JSON.stringify(data, null, 2);
       } catch (error) {
-        messageBox.textContent = "⚠️ Error al conectar con el servicio. Verifica tu conexión o intenta más tarde.";
-        console.error(error);
+        result.textContent = `Failed to analyze video: ${error.message}`;
       }
-    }
+    });
   </script>
 </body>
-  </html>
+</html>
