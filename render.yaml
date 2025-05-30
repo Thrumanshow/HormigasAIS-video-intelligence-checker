@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: xoxo-ai-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn backend.api:app --host 0.0.0.0 --port 10000"
+    healthCheckPath: "/health"
+    autoDeploy: true
+    repo: https://github.com/Thrumanshow/HormigasAIS-video-intelligence-checker
