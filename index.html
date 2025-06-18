@@ -2,76 +2,109 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HormigasAIS - Video Intelligence Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HormigasAIS | Verificador de Videos</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 2rem;
-      background-color: #f4f4f4;
     }
+
     h1 {
-      color: #333;
-    }
-    input[type="text"] {
-      padding: 0.5rem;
-      width: 60%;
+      color: #007bff;
       margin-bottom: 1rem;
     }
+
+    input, button {
+      padding: 0.7rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 300px;
+      margin: 0.5rem;
+    }
+
     button {
-      padding: 0.5rem 1rem;
-      background-color: #0077ff;
+      background-color: #007bff;
       color: white;
       border: none;
       cursor: pointer;
     }
-    .result {
-      margin-top: 2rem;
+
+    .status {
+      margin-top: 1rem;
+      font-size: 1.2rem;
       padding: 1rem;
-      background: #fff;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      min-width: 250px;
+      text-align: center;
+      display: none;
+    }
+
+    .verde {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .azul {
+      background-color: #d1ecf1;
+      color: #0c5460;
     }
   </style>
 </head>
 <body>
-  <h1>🔍 HormigasAIS - Video Intelligence Checker</h1>
-  <p>Pega un enlace de video de TikTok o YouTube para analizarlo con IA:</p>
-  <input type="text" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." />
-  <br />
-  <button onclick="checkVideo()">Analizar</button>
+  <h1>🧠 HormigasAIS Video Checker</h1>
+  <p>Pega un enlace de video para verificar su autenticidad:</p>
+  <input type="text" id="videoURL" placeholder="https://youtube.com/..." />
+  <button onclick="verificar()">Verificar Video</button>
 
-  <div id="result" class="result" style="display: none;"></div>
+  <div id="resultado" class="status"></div>
 
   <script>
-    async function checkVideo() {
-      const url = document.getElementById('videoUrl').value;
-      const resultDiv = document.getElementById('result');
-      resultDiv.style.display = 'block';
-      resultDiv.innerHTML = '⏳ Procesando...';
+    async function verificar() {
+      const url = document.getElementById('videoURL').value;
+      const resultado = document.getElementById('resultado');
+      resultado.style.display = 'none';
+      resultado.className = 'status';
+
+      if (!url.trim()) {
+        resultado.textContent = '❗ Por favor, ingresa una URL válida.';
+        resultado.style.display = 'block';
+        resultado.classList.add('azul');
+        return;
+      }
 
       try {
-        const response = await fetch('https://xoxo-checker.onrender.com/analizar', {
+        const res = await fetch('https://xoxo-ai-backend.onrender.com/analizar', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ url: url })
+          body: JSON.stringify({ url })
         });
 
-        const data = await response.json();
+        const data = await res.json();
 
-        if (data && data.estado) {
-          resultDiv.innerHTML = `
-            <strong>✅ Resultado:</strong><br>
-            ${data.mensaje}
-          `;
+        if (data.resultado === 'real') {
+          resultado.textContent = '💡 Video con alta probabilidad de ser REAL.';
+          resultado.classList.add('verde');
+        } else if (data.resultado === 'sintético') {
+          resultado.textContent = '💡 Video con alta probabilidad de ser generado por IA.';
+          resultado.classList.add('azul');
         } else {
-          resultDiv.innerHTML = '❌ No se pudo analizar el video.';
+          resultado.textContent = '⚠️ Resultado no concluyente.';
+          resultado.classList.add('azul');
         }
+
+        resultado.style.display = 'block';
       } catch (error) {
-        resultDiv.innerHTML = '⚠️ Error al conectar con el servidor.';
+        resultado.textContent = '⚠️ Error al conectar con el backend.';
+        resultado.classList.add('azul');
+        resultado.style.display = 'block';
       }
     }
   </script>
