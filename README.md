@@ -11,123 +11,58 @@ Este proyecto es una herramienta web **minimalista** que permite a cualquier usu
 - 💡 **Verde**: Video con alta probabilidad de ser real (actores reales, escenas naturales).
 - 💡 **Azul**: Video con alta probabilidad de haber sido generado o manipulado por inteligencia artificial.
 
-La evaluación se realiza mediante un microservicio de IA llamado **XOXO**, que analiza datos visuales y contextuales del video en tiempo real. Todo esto corre sobre una arquitectura distribuida alojada en **Render**.
+La evaluación se realiza mediante un microservicio de IA llamado **XOXO**, que analiza datos visuales y contextuales del video en tiempo real. Todo esto corre sobre una arquitectura distribuida desplegada en **Render**.
 
 ---
 
 ## 🧱 Estructura del proyecto
 
-```bash
-HormigasAIS-video-intelligence-checker/
-├── index.html               # Interfaz pública y minimalista
-├── README.md                # Este archivo
-└── backend/                 # Lógica del análisis con IA (XOXO)
-    ├── api.py               # API con FastAPI
-    └── requirements.txt     # Dependencias del backend
 ---
 
-## 🚀 Entorno en producción (Render) 
+## 🚀 Servicios desplegados en producción (Render)
 
-Los servicios desplegados actualmente son: 
+### 1. 🧠 `xoxo-ai-backend` (IA Backend)
 
-1. 🧠 Backend IA - FastAPI 
+- URL: https://xoxo-ai-backend.onrender.com
+- Tipo: Web Service (Python)
+- Puerto: 8000
+- Framework: FastAPI
+- Función: Analiza datos de videos y entrega señales de autenticidad.
+- Región: Oregon
 
-• URL: https://hormigasais-video-intelligence-backend.onrender.com 
+---
 
-• Puerto: 8000 
+### 2. ⚙️ `n8n-automation-xoxo` (Automatización inteligente)
 
-• Framework: FastAPI 
+- URL: https://n8n-automation-xoxo.onrender.com
+- Tipo: Web Service (Docker)
+- Plataforma: n8n autoalojado
+- Función: Orquestación de flujos inteligentes con eventos de GitHub y resultados IA.
 
-• Región: Oregon 
+---
 
----- 
+### 3. 🧩 `webhook-github-action` (Escucha GitHub)
 
-## 2. ⚙️ Automatización Inteligente - n8n 
+- URL: https://webhook-github-action.onrender.com
+- Tipo: Web Service (Node.js)
+- Función: Escucha cambios en GitHub y dispara eventos hacia n8n o FastAPI.
+- Plan: Starter
 
-• URL: https://n8n-automation-xoxo.onrender.com 
+---
 
-• Función: Automatiza procesos conectados a GitHub y flujos IA de validación. 
+## ⚙️ Ejecución local
 
-• Docker: Sí, autoalojado con configuración personalizada. 
+```bash
+# 1. Clona el repositorio
+git clone https://github.com/Thrumanshow/HormigasAIS-video-intelligence-checker.git
+cd HormigasAIS-video-intelligence-checker
 
----- 
+# 2. Ejecuta el backend
+cd backend
+pip install -r requirements.txt
+uvicorn api:app --reload
 
-## 3. 🧩 Webhook GitHub Action 
+---
 
-• URL: https://webhook-github-action.onrender.com 
-
-• Propósito: Escucha eventos en GitHub y los canaliza a flujos de n8n y backend. 
-
-• Node.js Runtime 
-
---- 
-
-## 🚀 Cómo ejecutar el proyecto localmente 
-
-• Clona el repositorio: 
-
-git clone https://github.com/Thrumanshow/HormigasAIS-video-intelligence-checker.git cd HormigasAIS-video-intelligence-checker 
-
-• Ejecuta el backend: 
-
-cd backend pip install -r requirements.txt uvicorn api:app --reload 
-
-La API estará corriendo en: http://127.0.0.1:8000 
-
-• Abre el frontend: 
-
-Solo abre el archivo index.html en tu navegador. No necesita servidor para funcionar localmente. 
-
----- 
-
-## 🛠️ Tecnologías utilizadas 
-
-• HTML/CSS para la interfaz de usuario 
-
-• FastAPI como framework para el backend 
-
-• Python 3.9+ 
-
-• Render.com para el despliegue 
-
-• Docker (para n8n) 
-
-• GitHub Actions + Webhook personalizado 
-
---- 
-
-## 📬 ¿Cómo colaborar? 
-
-¡Las puertas del hormiguero están abiertas! 
-
-• Sugiere mejoras abriendo un Issue 
-
-• Envía un Pull Request con nuevas funciones o ideas 
-
-• Comparte el proyecto y su propósito en tus redes 
-
---- 
-
-## 🧠 Visión futura 
-
-• Integración con APIs de detección de deepfakes (OpenAI, DeepAI, etc.) 
-
-• Registro y análisis estadístico de tipos de videos 
-
-• Verificación de metadatos, thumbnails y subtítulos 
-
-• Extensiones para navegadores 
-
-• Traducción a varios idiomas 
-
-• Integración con LenPT (HormigasAIS Language) 
-
---- 
-
-✨ Créditos 
-
-Creado con inteligencia colaborativa por:
-Cristhiam Quiñonez – HormigasAIS
-Inspirado en la frase: 
-
-"La mente curiosa y la colaboración humana."
+¿Te gustaría que lo subamos con un mensaje de commit tipo:  
+`docs: actualización estratégica del README para Render v1.0`?
