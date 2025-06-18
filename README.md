@@ -9,9 +9,9 @@ Un filtro digital creado por y para la comunidad **HormigasAIS**, con el propós
 Este proyecto es una herramienta web **minimalista** que permite a cualquier usuario pegar el enlace de un video (por ejemplo, de YouTube) y recibir una **señal visual** sobre su autenticidad:
 
 - 💡 **Verde**: Video con alta probabilidad de ser real (actores reales, escenas naturales).
-- 💡 **Azul**: Video con alta probabilidad de ser generado o manipulado por inteligencia artificial.
+- 💡 **Azul**: Video con alta probabilidad de haber sido generado o manipulado por inteligencia artificial.
 
-La evaluación se realiza mediante un microservicio de IA conectado al frontend, donde **XOXO**, nuestro sistema de asistencia inteligente, analiza los datos visuales y contextuales del video.
+La evaluación se realiza mediante un microservicio de IA llamado **XOXO**, que analiza datos visuales y contextuales del video en tiempo real. Todo esto corre sobre una arquitectura distribuida alojada en **Render**.
 
 ---
 
@@ -19,42 +19,84 @@ La evaluación se realiza mediante un microservicio de IA conectado al frontend,
 
 ```bash
 HormigasAIS-video-intelligence-checker/
-├── index.html             # Interfaz pública y minimalista
-├── README.md              # Este archivo
-└── backend/               # Lógica del análisis con IA (XOXO)
-    ├── api.py             # API inicial con FastAPI
-    └── requirements.txt   # Dependencias del backend
+├── index.html               # Interfaz pública y minimalista
+├── README.md                # Este archivo
+└── backend/                 # Lógica del análisis con IA (XOXO)
+    ├── api.py               # API con FastAPI
+    └── requirements.txt     # Dependencias del backend
 ---
 
- 🚀 Cómo ejecutar el proyecto localmente 
+## 🚀 Entorno en producción (Render) 
 
-1. Clona el repositorio 
+Los servicios desplegados actualmente son: 
+
+1. 🧠 Backend IA - FastAPI 
+
+• URL: https://hormigasais-video-intelligence-backend.onrender.com 
+
+• Puerto: 8000 
+
+• Framework: FastAPI 
+
+• Región: Oregon 
+
+---- 
+
+## 2. ⚙️ Automatización Inteligente - n8n 
+
+• URL: https://n8n-automation-xoxo.onrender.com 
+
+• Función: Automatiza procesos conectados a GitHub y flujos IA de validación. 
+
+• Docker: Sí, autoalojado con configuración personalizada. 
+
+---- 
+
+## 3. 🧩 Webhook GitHub Action 
+
+• URL: https://webhook-github-action.onrender.com 
+
+• Propósito: Escucha eventos en GitHub y los canaliza a flujos de n8n y backend. 
+
+• Node.js Runtime 
+
+--- 
+
+## 🚀 Cómo ejecutar el proyecto localmente 
+
+• Clona el repositorio: 
 
 git clone https://github.com/Thrumanshow/HormigasAIS-video-intelligence-checker.git cd HormigasAIS-video-intelligence-checker 
 
-2. Ejecuta el backend 
-
-Instala dependencias y ejecuta la API: 
+• Ejecuta el backend: 
 
 cd backend pip install -r requirements.txt uvicorn api:app --reload 
 
-La API estará corriendo en http://127.0.0.1:8000. 
+La API estará corriendo en: http://127.0.0.1:8000 
 
-3. Abre el frontend 
+• Abre el frontend: 
 
-Abre el archivo index.html en tu navegador favorito (por ahora, no necesita servidor web). 
+Solo abre el archivo index.html en tu navegador. No necesita servidor para funcionar localmente. 
 
-🛠️ Tecnologías utilizadas 
+---- 
+
+## 🛠️ Tecnologías utilizadas 
 
 • HTML/CSS para la interfaz de usuario 
 
 • FastAPI como framework para el backend 
 
-• Python 3.9+ como lenguaje base 
+• Python 3.9+ 
 
-• (Próximamente) integración con servicios de análisis visual por IA (OpenAI, DeepAI, u otros) 
+• Render.com para el despliegue 
 
-📬 ¿Cómo colaborar? 
+• Docker (para n8n) 
+
+• GitHub Actions + Webhook personalizado 
+
+--- 
+
+## 📬 ¿Cómo colaborar? 
 
 ¡Las puertas del hormiguero están abiertas! 
 
@@ -64,20 +106,28 @@ Abre el archivo index.html en tu navegador favorito (por ahora, no necesita serv
 
 • Comparte el proyecto y su propósito en tus redes 
 
-🧠 Visión futura 
+--- 
 
-• Integración con APIs avanzadas de detección de deepfakes 
+## 🧠 Visión futura 
 
-• Registro de estadísticas sobre tipos de videos 
+• Integración con APIs de detección de deepfakes (OpenAI, DeepAI, etc.) 
 
-• Versión extendida para verificar metadatos, thumbnails y subtítulos 
+• Registro y análisis estadístico de tipos de videos 
 
-• Extensión para navegadores 
+• Verificación de metadatos, thumbnails y subtítulos 
+
+• Extensiones para navegadores 
 
 • Traducción a varios idiomas 
 
+• Integración con LenPT (HormigasAIS Language) 
+
+--- 
+
 ✨ Créditos 
 
-Creado con inteligencia colaborativa por
+Creado con inteligencia colaborativa por:
 Cristhiam Quiñonez – HormigasAIS
-Inspirado en la frase: "La mente curiosa y la colaboración humana."
+Inspirado en la frase: 
+
+"La mente curiosa y la colaboración humana."
