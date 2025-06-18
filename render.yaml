@@ -1,41 +1,11 @@
-version: '3.8'
-
 services:
-  xoxo-ai-backend:
-    image: ghcr.io/thrumanshow/hormigasais-video-intelligence-checker:latest
-    container_name: xoxo-ai-backend
-    restart: always
-    environment:
-      - NODE_ENV=production
-      - PORT=3000
-    ports:
-      - "3000:3000"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    depends_on:
-      - n8n
-
-  n8n:
-    image: n8nio/n8n
-    container_name: n8n
-    restart: always
-    environment:
-      - N8N_BASIC_AUTH_ACTIVE=true
-      - N8N_BASIC_AUTH_USER=xoxo
-      - N8N_BASIC_AUTH_PASSWORD=🔒escribe-tu-clave
-      - WEBHOOK_URL=http://localhost:5678
-      - N8N_HOST=n8n.local
-    ports:
-      - "5678:5678"
-    volumes:
-      - ./n8n_data:/home/node/.n8n
-      - ./xoxo_signal_flow_n8n.json:/flows/xoxo_signal_flow_n8n.json
-    command: >
-      /bin/sh -c "n8n import:workflow --input /flows/xoxo_signal_flow_n8n.json && n8n start"
-
-networks:
-  default:
-    name: xoxo-net
+  - type: web
+    name: hormigasais-video-intelligence-backend
+    env: python
+    plan: starter
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.api:app --host 0.0.0.0 --port 8000
+    envVars:
+      - key: MODE
+        value: production
+    region: oregon
