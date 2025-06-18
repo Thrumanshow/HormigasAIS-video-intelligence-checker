@@ -1,14 +1,39 @@
 services:
   - type: web
+    name: n8n-automation-xoxo
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    region: oregon
+
+  - type: web
     name: hormigasais-video-intelligence-backend
     env: python
     plan: starter
     buildCommand: pip install -r backend/requirements.txt
     startCommand: uvicorn backend.api:app --host 0.0.0.0 --port 8000
     envVars:
-      - type: web
-    name: n8n-automation-xoxo
-    env: docker
+      - key: MODE
+        value: production
+    region: oregon
+
+  - type: web
+    name: webhook-github-action
+    runtime: node
     plan: starter
-    dockerfilePath: ./Dockerfile
+    buildCommand: pnpm install && pnpm run build
+    startCommand: pnpm run start
+    envVars:
+      - key: GITHUB_OWNER_NAME
+        sync: false
+      - key: GITHUB_REPO_NAME
+        sync: false
+      - key: GITHUB_WORKFLOW_ID
+        sync: false
+      - key: RENDER_WEBHOOK_SECRET
+        sync: false
+      - key: RENDER_API_KEY
+        sync: false
+      - key: GITHUB_API_TOKEN
+        sync: false
     region: oregon
