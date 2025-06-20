@@ -1,35 +1,49 @@
+<!-- frontend/index.html -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HormigasAIS - Video Intelligence Checker</title>
+  <title>XOXO Verificador de Videos</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 2rem; }
-    input, button { padding: 0.5rem; font-size: 1rem; margin: 0.5rem; }
-    .signal { margin-top: 1rem; font-size: 1.2rem; font-weight: bold; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      color: #333;
+      text-align: center;
+      padding: 2rem;
+    }
+    input, button {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    .signal {
+      margin-top: 2rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
   </style>
 </head>
 <body>
-  <h1>🧠 HormigasAIS Video Checker</h1>
-  <p>Pega el enlace del video:</p>
-  <input type="text" id="video-url" placeholder="https://..." size="40" />
-  <button onclick="checkVideo()">Analizar</button>
+  <h1>🔍 XOXO Video Intelligence Checker</h1>
+  <p>Pega un enlace de video para verificar su autenticidad</p>
+  <input type="text" id="videoURL" placeholder="https://www.youtube.com/watch?v=..." />
+  <button onclick="checkVideo()">Verificar</button>
   <div class="signal" id="result"></div>
 
   <script>
     async function checkVideo() {
-      const url = document.getElementById("video-url").value;
+      const url = document.getElementById("videoURL").value;
       const res = await fetch("https://xoxo-ai-backend.onrender.com/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ video_url: url }),
       });
-
       const data = await res.json();
-      document.getElementById("result").innerText = 
-        data.signal === "Azul" ? "🔵 Probabilidad alta de contenido generado por IA" :
-        data.signal === "Verde" ? "🟢 Probabilidad alta de video real" : "⚪ Análisis no concluyente";
+      document.getElementById("result").innerText =
+        `🔹 Estado: ${data.authenticity} \n🔸 Señal: ${data.signal}`;
     }
   </script>
 </body>
