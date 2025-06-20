@@ -1,0 +1,2 @@
+mkdir -p releases
+git mv xoxo_ai_backend_package.zip releases/xoxo_ai_backend_package.zip
