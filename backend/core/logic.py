@@ -1,7 +1,18 @@
-def analyze_video(video_url: str) -> str:
+# backend/core/logic.py
+
+from datetime import datetime
+
+def analyze_video_link(video_url: str) -> dict:
     """
-    Lógica simulada para detectar si el video es real o generado por IA.
+    Simula el análisis de un enlace de video.
+    En producción, esta función será reemplazada por IA real.
     """
-    if "ai" in video_url.lower() or "deepfake" in video_url.lower():
-        return "Azul"  # Probabilidad alta de ser generado por IA
-    return "Verde"  # Probabilidad alta de ser real
+    # Simulación básica:
+    result = {
+        "video_url": video_url,
+        "timestamp": datetime.utcnow().isoformat(),
+        "status": "checked",
+        "authenticity": "real" if "youtube" in video_url else "synthetic",
+        "signal": "green" if "youtube" in video_url else "blue",
+    }
+    return result
