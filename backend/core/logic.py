@@ -1,10 +1,11 @@
-def analyze_video(video_url: str) -> str:
-    """
-    Simula el análisis de un video y devuelve una señal de autenticidad.
-    """
+# logic.py
+# Lógica de evaluación de autenticidad del video
 
-    # Lógica simplificada: usa palabras clave para inferir resultado
-    if "ai" in video_url.lower() or "fake" in video_url.lower():
-        return "azul"  # Probabilidad alta de manipulación por IA
-    else:
-        return "verde"  # Alta probabilidad de ser real
+def evaluate_video(video_url: str) -> str:
+    """
+    Simula el análisis de un video y retorna su autenticidad.
+    Retorna: 'real' o 'ai-generated'
+    """
+    if "deepfake" in video_url.lower():
+        return "ai-generated"
+    return "real"
