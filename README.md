@@ -58,16 +58,8 @@ HormigasAIS-video-intelligence-checker/ ├── backend/ # Microservicio XOXO 
 # 1. Clona el repositorio
 git clone https://github.com/Thrumanshow/HormigasAIS-video-intelligence-checker.git
 cd HormigasAIS-video-intelligence-checker
-
+```
 # 2. Ejecuta el backend
 cd backend
 pip install -r requirements.txt
 uvicorn api:app --reload
-
----
-
-🪪 Licencia 
-
-Este proyecto está bajo la Licencia MIT.
-
----
