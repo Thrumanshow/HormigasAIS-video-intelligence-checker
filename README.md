@@ -16,37 +16,41 @@ La evaluación se realiza mediante un microservicio de IA llamado **XOXO**, que 
 ---
 
 ## 🧱 Estructura del proyecto
-
-HormigasAIS-video-intelligence-checker/ ├── backend/ # Microservicio XOXO en FastAPI │ ├── api.py │ └── requirements.txt ├── frontend/ # Interfaz de usuario minimalista │ └── index.html ├── .github/workflows/ # GitHub Actions configuradas │ └── deploy.yml ├── render.yaml # Configuración de despliegue en Render └── README.md # Documentación principal
+HormigasAIS-video-intelligence-checker/ 
+├── backend/ # Microservicio XOXO en FastAPI │
+├── api.py │ 
+└── requirements.txt 
+├── frontend/ # Interfaz de usuario minimalista │ 
+└── index.html 
+├── .github/workflows/ # GitHub Actions configuradas │ 
+└── deploy.yml 
+├── render.yaml # Configuración de despliegue en Render 
+└── README.md # Documentación principal
 
 ---
 
 ## 🚀 Servicios desplegados en producción (Render)
 
-### 1. 🧠 `xoxo-ai-backend` (IA Backend)
+### 1. 🧠 `xoxo-ai-backend` (Backend de IA)
 
-- URL: https://xoxo-ai-backend.onrender.com
-- Tipo: Web Service (Python)
+- URL: [https://xoxo-ai-backend.onrender.com](https://xoxo-ai-backend.onrender.com/)
+- Tipo: Servicio web (Python)
 - Puerto: 8000
 - Framework: FastAPI
-- Función: Analiza datos de videos y entrega señales de autenticidad.
-- Región: Oregon
-
----
+- Función: Analiza datos de vídeos y entrega señales de autenticidad.
+- Región: Oregón
 
 ### 2. ⚙️ `n8n-automation-xoxo` (Automatización inteligente)
 
-- URL: https://n8n-automation-xoxo.onrender.com
-- Tipo: Web Service (Docker)
+- URL: [https://n8n-automation-xoxo.onrender.com](https://n8n-automation-xoxo.onrender.com/)
+- Tipo: Servicio web (Docker)
 - Plataforma: n8n autoalojado
 - Función: Orquestación de flujos inteligentes con eventos de GitHub y resultados IA.
 
----
-
 ### 3. 🧩 `webhook-github-action` (Escucha GitHub)
 
-- URL: https://webhook-github-action.onrender.com
-- Tipo: Web Service (Node.js)
+- URL: [https://webhook-github-action.onrender.com](https://webhook-github-action.onrender.com/)
+- Tipo: Servicio web (Node.js)
 - Función: Escucha cambios en GitHub y dispara eventos hacia n8n o FastAPI.
 - Plan: Starter
 
@@ -58,7 +62,7 @@ HormigasAIS-video-intelligence-checker/ ├── backend/ # Microservicio XOXO 
 # 1. Clona el repositorio
 git clone https://github.com/Thrumanshow/HormigasAIS-video-intelligence-checker.git
 cd HormigasAIS-video-intelligence-checker
-```
+
 # 2. Ejecuta el backend
 cd backend
 pip install -r requirements.txt
