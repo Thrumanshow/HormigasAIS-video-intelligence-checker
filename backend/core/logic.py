@@ -1,18 +1,10 @@
-# backend/core/logic.py
-
-from datetime import datetime
-
-def analyze_video_link(video_url: str) -> dict:
+def analyze_video(video_url: str) -> str:
     """
-    Simula el análisis de un enlace de video.
-    En producción, esta función será reemplazada por IA real.
+    Simula el análisis de un video y devuelve una señal de autenticidad.
     """
-    # Simulación básica:
-    result = {
-        "video_url": video_url,
-        "timestamp": datetime.utcnow().isoformat(),
-        "status": "checked",
-        "authenticity": "real" if "youtube" in video_url else "synthetic",
-        "signal": "green" if "youtube" in video_url else "blue",
-    }
-    return result
+
+    # Lógica simplificada: usa palabras clave para inferir resultado
+    if "ai" in video_url.lower() or "fake" in video_url.lower():
+        return "azul"  # Probabilidad alta de manipulación por IA
+    else:
+        return "verde"  # Alta probabilidad de ser real
