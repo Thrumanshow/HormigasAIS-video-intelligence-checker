@@ -15,17 +15,11 @@ La evaluación se realiza mediante un microservicio de IA llamado **XOXO**, que 
 
 ---
 
-## 🧱 Estructura del proyecto
-HormigasAIS-video-intelligence-checker/ 
-├── backend/ # Microservicio XOXO en FastAPI │
-├── api.py │ 
-└── requirements.txt 
-├── frontend/ # Interfaz de usuario minimalista │ 
-└── index.html 
-├── .github/workflows/ # GitHub Actions configuradas │ 
-└── deploy.yml 
-├── render.yaml # Configuración de despliegue en Render 
-└── README.md # Documentación principal
+## 🧱 Estructura del proyecto 
+
+HormigasAIS-video-intelligence-checker/ ├── backend/ # Microservicio XOXO en FastAPI │ ├── api.py │ └── requirements.txt ├── frontend/ # Interfaz de usuario minimalista │ └── index.html ├── .github/ │ └── workflows/ │ └── deploy.yml # GitHub Action para despliegue ├── render.yaml # Configuración de Render └── README.md # Documentación principal
+
+
 
 ---
 
