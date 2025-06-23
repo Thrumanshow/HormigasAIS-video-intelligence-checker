@@ -1,12 +1,16 @@
 # 🧠 HormigasAIS 影片智慧檢測器
 
+[![XOXO AI Backend 狀態](https://img.shields.io/website?url=https%3A%2F%2Fxoxo-ai-backend.onrender.com&label=XOXO%20AI%20Backend&style=flat-square)](https://xoxo-ai-backend.onrender.com)
+[![前端頁面狀態](https://img.shields.io/website?url=https%3A%2F%2Fn8n-automation-xoxo.onrender.com&label=n8n%20%2F%20Frontend&style=flat-square)](https://n8n-automation-xoxo.onrender.com)
+[![GitHub 最後提交](https://img.shields.io/github/last-commit/Thrumanshow/HormigasAIS-video-intelligence-checker?style=flat-square)](https://github.com/Thrumanshow/HormigasAIS-video-intelligence-checker)
+
 一個由 **HormigasAIS** 社群創建的數位過濾工具，旨在檢測線上影片的真實性，對抗由合成內容所產生的錯誤資訊。
 
 ---
 
 ## 🌐 這是什麼？
 
-這是一個**極簡風格**的網頁工具，任何使用者都可以貼上影片連結（例如 YouTube），並接收一個**視覺信號**來判斷其真實性：
+這是一個 **極簡風格** 的網頁工具，任何使用者都可以貼上影片連結（例如 YouTube），並接收一個 **視覺信號** 來判斷其真實性：
 
 - 💡 **綠色**：影片極有可能為真實（真人演出、自然場景）。
 - 💡 **藍色**：影片極有可能為人工智慧生成或被操縱。
@@ -36,7 +40,7 @@ HormigasAIS-video-intelligence-checker/
 ### 1. 🧠 `xoxo-ai-backend`（AI 後端）
 
 - URL: [https://xoxo-ai-backend.onrender.com](https://xoxo-ai-backend.onrender.com/)
-- 類型：Web 服務（Python）
+- 類型：Web 服務（Python）  
 - 埠號：8000  
 - 框架：FastAPI  
 - 功能：分析影片資料並傳回真實性信號  
