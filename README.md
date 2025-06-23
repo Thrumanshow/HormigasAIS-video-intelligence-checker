@@ -33,8 +33,9 @@ HormigasAIS-video-intelligence-checker/
 
 ## 🚀 已部署的服務（Render）
 
-### 1. 🧠 （AI 後端）
+### 1. 🧠 `xoxo-ai-backend`（AI 後端）
 
+- URL: [https://xoxo-ai-backend.onrender.com](https://xoxo-ai-backend.onrender.com/)
 - 類型：Web 服務（Python）
 - 埠號：8000  
 - 框架：FastAPI  
