@@ -2,11 +2,8 @@ from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from center.logic import analyze_video
 import uvicorn
+app.add_middleware( CORSMiddleware, allow_origins=["https://thrumanshow.github.io"], # importante allow_credentials=True, allow_methods=["*"], allow_headers=["*"], ) 
 
-app = FastAPI(
-    title="XOXO Video Intelligence API",
-    description="Microservicio de análisis de video para el ecosistema HormigasAIS.",
-    version="0.1.0"
 )
 
 class VideoInput(BaseModel):
