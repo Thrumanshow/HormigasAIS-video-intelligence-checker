@@ -1,26 +1,34 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from center.logic import analyze_video
-import uvicorn
-app.add_middleware( CORSMiddleware, allow_origins=["https://thrumanshow.github.io"], # importante allow_credentials=True, allow_methods=["*"], allow_headers=["*"], ) 
+import random
 
+app = FastAPI()
+
+# Habilitar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://thrumanshow.github.io"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-class VideoInput(BaseModel):
+# Modelo de entrada
+class VideoRequest(BaseModel):
     url: str
 
-@app.post("/analyze/")
-async def analyze(input_data: VideoInput):
-    try:
-        result = analyze_video(input_data.url)
-        return {"status": "success", "signal": result}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+# Análisis simulado
+@app.post("/analyze")
+def analyze_video(req: VideoRequest):
+    url = req.url
 
-@app.get("/")
-async def root():
-    return {"message": "XOXO AI backend está activo"}
+    # Lógica verosímil simple (placeholder)
+    if "tiktok" in url or "shorts" in url:
+        signal = "blue"  # IA generada
+    elif "youtube" in url:
+        signal = random.choice(["green", "blue"])
+    else:
+        signal = "green"
 
-# Solo se usa para pruebas locales
-if __name__ == "__main__":
-    uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
+    return {"signal": signal}
