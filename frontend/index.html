@@ -1,50 +1,25 @@
 <!-- frontend/index.html -->
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>XOXO Verificador de Videos</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f8ff;
-      color: #333;
-      text-align: center;
-      padding: 2rem;
-    }
-    input, button {
-      padding: 0.5rem;
-      font-size: 1rem;
-      margin-top: 1rem;
-    }
-    .signal {
-      margin-top: 2rem;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-  </style>
-</head>
-<body>
-  <h1>🔍 XOXO Video Intelligence Checker</h1>
-  <p>Pega un enlace de video para verificar su autenticidad</p>
-  <input type="text" id="videoURL" placeholder="https://www.youtube.com/watch?v=..." />
-  <button onclick="checkVideo()">Verificar</button>
-  <div class="signal" id="result"></div>
+<input type="text" id="videoUrl" placeholder="Pega el enlace del video">
+<button onclick="checkVideo()">Analizar</button>
+<div id="result"></div>
 
-  <script>
-    async function checkVideo() {
-      const url = document.getElementById("videoURL").value;
-      const res = await fetch("https://xoxo-ai-backend.onrender.com/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ video_url: url }),
-      });
-      const data = await res.json();
-      document.getElementById("result").innerText =
-        `🔹 Estado: ${data.authenticity} \n🔸 Señal: ${data.signal}`;
+<script>
+async function checkVideo() {
+    const url = document.getElementById('videoUrl').value;
+    const res = await fetch('https://xoxo-ai-backend.onrender.com/analyze', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ url })
+    });
+    const data = await res.json();
+    const resultDiv = document.getElementById('result');
+    if(data.signal === 'green') {
+        resultDiv.innerText = '💡 El video parece auténtico.';
+        resultDiv.style.color = 'green';
+    } else {
+        resultDiv.innerText = '💡 El video parece generado por IA.';
+        resultDiv.style.color = 'blue';
     }
-  </script>
-</body>
-</html>
+}
+          </script>
