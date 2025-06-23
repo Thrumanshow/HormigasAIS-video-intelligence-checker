@@ -26,8 +26,7 @@ AntsAIS-video-intelligence-checker/ 
   
 ├──── render.yaml # 渲染配置  
 └└──── README.md # 主要說明文件 
-
-透過 DeepL.com（免費版）翻譯 
+ 
 
 --- 
 
