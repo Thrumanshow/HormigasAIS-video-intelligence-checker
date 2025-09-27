@@ -35,6 +35,26 @@ HormigasAIS-video-intelligence-checker/
 
 ---
 
+# HormigasAIS Video Intelligence Checker - SaaS 服務許可證
+
+本倉庫包含 **HormigasAIS Video Intelligence Checker** 服務的官方許可證文件。
+
+## 許可證檔案
+
+1. **繁體中文（原始版）**  
+   - 檔案: [LICENSE_SaaS.md](./LICENSE_SaaS.md)  
+   - 國際使用與主要法律參考。
+
+2. **西班牙文**  
+   - 檔案: [LICENSE_SaaS_ES.md](./LICENSE_SaaS_ES.md)  
+   - 官方西班牙文翻譯，供西語使用者使用。
+
+3. **英文**  
+   - 檔案: [LICENSE_SaaS_EN.md](./LICENSE_SaaS_EN.md)  
+   - 官方英文翻譯，供國際使用者使用。
+
+---     
+
 ## 🚀 已部署的服務（Render）
 
 ### 1. 🧠 `xoxo-ai-backend`（AI 後端）
