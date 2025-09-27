@@ -1,7 +1,7 @@
-# Licencia de Servicio SaaS - HormigasAIS Video Intelligence Checker
+軟體即服務（SaaS）授權條款 - HormigasAIS 影片智慧檢測器 
 
-**Fecha de emisión:** 27 de septiembre de 2025  
-**Autor/Propietario:** Cristhiam Quiñonez | HormigasAIS
+發佈日期： 2025 年 9 月 27 日
+作者/擁有者： Cristhiam Quiñonez | HormigasAIS
 
 ---
 
