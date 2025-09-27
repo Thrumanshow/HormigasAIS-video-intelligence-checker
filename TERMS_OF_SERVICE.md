@@ -56,4 +56,4 @@ El acceso al servicio puede ser suspendido si el usuario viola esta licencia o l
 
 **Contacto para licencias corporativas o asociaciones estratégicas:**  
 Cristhiam Quiñonez | HormigasAIS  
-[Correo](chrisquionez354@gmail.com)
+[Correo/chrisquionez354@gmail.com]
