@@ -1,6 +1,9 @@
 import os
 import subprocess
 import sys
+import asyncio
+from fastapi import FastAPI, Query
+from fastapi.responses import JSONResponse
 
 # ------------------------------
 # 1️⃣ Ir al directorio backend
@@ -36,27 +39,49 @@ except ImportError:
     print("⚠️ No se encontró python-dotenv, continuando sin variables de entorno.")
 
 # ------------------------------
-# 4️⃣ Configuración de FastAPI
+# 4️⃣ Configurar FastAPI y funciones asíncronas
 # ------------------------------
-port = os.getenv("PORT", "8000")
-host = "0.0.0.0"
+app = FastAPI()
 
-print(f"Iniciando FastAPI en http://{host}:{port} ...")
+async def analizar_video(video_id: str):
+    print(f"[{asyncio.get_event_loop().time()}] Inicio del análisis: {video_id}")
+    await asyncio.sleep(5)  # Simula análisis pesado
+    print(f"[{asyncio.get_event_loop().time()}] Análisis terminado: {video_id}")
+    return {"resultado": "Video validado", "video_id": video_id}
+
+@app.get("/analizar/")
+async def endpoint_analizar(videos: list[str] = Query(..., description="Lista de IDs de videos a analizar")):
+    """
+    Endpoint que recibe una lista de videos y los procesa en paralelo.
+    Ejemplo: /analizar/?videos=video1&videos=video2
+    """
+    # Crear tareas para todos los videos
+    tareas = [analizar_video(video_id) for video_id in videos]
+
+    # Ejecutar todas las tareas en paralelo
+    resultados = await asyncio.gather(*tareas)
+
+    return JSONResponse(content={"resultados": resultados})
 
 # ------------------------------
 # 5️⃣ Levantar servidor Uvicorn
 # ------------------------------
-try:
-    subprocess.check_call([
-        sys.executable,
-        "-m",
-        "uvicorn",
-        "api.api:app",   # <- ajustado a tu estructura backend/api/api.py
-        "--host",
-        host,
-        "--port",
-        port,
-        "--reload"
-    ])
-except subprocess.CalledProcessError:
-    print("❌ Error al iniciar el backend. Revisa si el puerto ya está en uso.")
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))
+    host = "0.0.0.0"
+
+    print(f"Iniciando FastAPI en http://{host}:{port} ...")
+    try:
+        subprocess.check_call([
+            sys.executable,
+            "-m",
+            "uvicorn",
+            "run_backend:app",  # Apunta a este mismo archivo
+            "--host",
+            host,
+            "--port",
+            str(port),
+            "--reload"
+        ])
+    except subprocess.CalledProcessError:
+        print("❌ Error al iniciar el backend. Revisa si el puerto ya está en uso.")
