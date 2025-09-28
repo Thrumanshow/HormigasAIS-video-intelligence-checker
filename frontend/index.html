@@ -1,152 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HormigasAIS - Video Intelligence Checker</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      text-align: center;
-      padding: 30px;
-      margin: 0;
-    }
-    h1 {
-      color: #1a73e8;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 1rem;
-      margin-bottom: 20px;
-    }
-    input {
-      width: 100%;
-      max-width: 500px;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    button {
-      padding: 12px 20px;
-      background: #1a73e8;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      margin-top: 5px;
-    }
-    button:hover {
-      background: #1558b0;
-    }
-    #loader {
-      margin-top: 20px;
-      display: none;
-    }
-    .loader {
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid #1a73e8;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      display: inline-block;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    #resultado {
-      margin-top: 25px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      min-height: 40px;
-      opacity: 0;
-      transition: opacity 0.5s ease-in;
-    }
-    .fade-in { opacity: 1; }
-    .verde { color: green; }
-    .azul { color: blue; }
-    .error { color: red; }
-
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #1a73e8;
-      font-weight: bold;
-    }
-    a:hover { text-decoration: underline; }
-
-    /* 📱 Responsive */
-    @media (max-width: 600px) {
-      body { padding: 20px; }
-      h1 { font-size: 1.4rem; }
-      input { font-size: 0.95rem; }
-      button { width: 100%; font-size: 1rem; }
-      #resultado { font-size: 1rem; }
-      .loader { width: 35px; height: 35px; border-width: 4px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>HormigasAIS - Video Intelligence Checker</title>
 </head>
 <body>
-  <h1>HormigasAIS 🧠 Video Intelligence Checker</h1>
-  <p>Pega un enlace de video y verifica su autenticidad:</p>
-  
-  <input type="text" id="videoUrl" placeholder="https://youtube.com/...">
-  <button onclick="analizarVideo()">Analizar</button>
+    <h1>Analizador de Videos - XOXO AI</h1>
 
-  <!-- Loader separado del resultado -->
-  <div id="loader"><div class="loader"></div></div>
+    <label for="videoIds">Ingrese IDs de videos separados por coma:</label>
+    <input type="text" id="videoIds" placeholder="video1,video2,video3">
+    <button id="analizarBtn">Analizar Videos</button>
 
-  <div id="resultado"></div>
+    <h2>Resultados:</h2>
+    <pre id="resultados"></pre>
 
-  <a href="changelog.html">🧠 Ver historial del proyecto (CHANGELOG)</a>
-  
-  <script>
-    async function analizarVideo() {
-      const url = document.getElementById("videoUrl").value;
-      const resultadoDiv = document.getElementById("resultado");
-      const loaderDiv = document.getElementById("loader");
+    <script>
+        const btn = document.getElementById("analizarBtn");
+        const resultadosEl = document.getElementById("resultados");
 
-      // Mostrar loader y reset resultado
-      loaderDiv.style.display = "inline-block";
-      resultadoDiv.innerHTML = "";
-      resultadoDiv.className = "";
+        btn.addEventListener("click", async () => {
+            resultadosEl.textContent = "Procesando videos...\n";
 
-      try {
-        const response = await fetch("https://xoxo-ai-backend.onrender.com/analyze", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url })
+            const videoIds = document.getElementById("videoIds").value
+                .split(",")
+                .map(v => v.trim())
+                .filter(v => v.length > 0);
+
+            if(videoIds.length === 0){
+                resultadosEl.textContent = "Por favor ingrese al menos un ID de video.";
+                return;
+            }
+
+            try {
+                // Construir query params
+                const query = videoIds.map(v => `videos=${v}`).join("&");
+                const response = await fetch(`/analizar/?${query}`);
+                const data = await response.json();
+
+                resultadosEl.textContent = JSON.stringify(data, null, 2);
+            } catch (err) {
+                resultadosEl.textContent = "Error al procesar los videos: " + err;
+            }
         });
-
-        const data = await response.json();
-
-        // Ocultar loader
-        loaderDiv.style.display = "none";
-
-        if (data.signal === "green") {
-          resultadoDiv.innerHTML = "✅ El video parece AUTÉNTICO";
-          resultadoDiv.className = "verde fade-in";
-        } else if (data.signal === "blue") {
-          resultadoDiv.innerHTML = "⚠️ El video parece GENERADO por IA";
-          resultadoDiv.className = "azul fade-in";
-        } else {
-          resultadoDiv.innerHTML = "❌ No se pudo analizar el video";
-          resultadoDiv.className = "error fade-in";
-        }
-      } catch (error) {
-        loaderDiv.style.display = "none";
-        resultadoDiv.innerHTML = "⚠️ Error al conectar con el servidor";
-        resultadoDiv.className = "error fade-in";
-        console.error(error);
-      }
-    }
-  </script>
+    </script>
 </body>
-    </html>
+</html>
