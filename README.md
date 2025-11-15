@@ -97,3 +97,8 @@ cd HormigasAIS-video-intelligence-checker
 cd backend
 pip install -r requirements.txt
 uvicorn api:app --reload
+
+# 3. 將服務名稱標準化為小寫
+if [ -d "$PREFIX/var/service/XOXO" ]; then
+    mv "$PREFIX/var/service/XOXO" "$PREFIX/var/service/xoxo"
+fi
