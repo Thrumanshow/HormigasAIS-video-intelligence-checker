@@ -1,12 +1,11 @@
-#!/data/data/com.termux/files/usr/bin/bash
-# Servicio backend XOXO para Termux
-# Ejecuta FastAPI + Uvicorn en segundo plano usando runit
+#!/data/data/com.termux/files/usr/bin/sh
+export PATH=$PREFIX/bin:$PATH
+export PYTHONPATH=/data/data/com.termux/files/home/HormigasAIS-video-intelligence-checker/backend
 
-# Ir al backend del proyecto
-cd $HOME/HormigasAIS-video-intelligence-checker/backend
+cd /data/data/com.termux/files/home/HormigasAIS-video-intelligence-checker/backend
 
-# Activar el entorno virtual
-source venv/bin/activate
+# Activar entorno virtual
+. venv/bin/activate
 
-# Ejecutar Uvicorn como proceso del servicio
-exec uvicorn api:app --host 0.0.0.0 --port 8000
+# Iniciar Uvicorn
+exec uvicorn main:app --host 0.0.0.0 --port 8000
