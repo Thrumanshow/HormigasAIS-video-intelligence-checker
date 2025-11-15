@@ -1,11 +1,12 @@
 #!/data/data/com.termux/files/usr/bin/sh
-export PATH=$PREFIX/bin:$PATH
-export PYTHONPATH=/data/data/com.termux/files/home/HormigasAIS-video-intelligence-checker/backend
+export PATH="$PREFIX/bin:$PATH"
+export PYTHONPATH="$HOME/HormigasAIS-video-intelligence-checker/backend"
 
-cd /data/data/com.termux/files/home/HormigasAIS-video-intelligence-checker/backend
+# Evita que el servicio crashee si el directorio no existe
+cd "$HOME/HormigasAIS-video-intelligence-checker/backend" || exit 1
 
 # Activar entorno virtual
-. venv/bin/activate
+. "$HOME/HormigasAIS-video-intelligence-checker/backend/venv/bin/activate"
 
-# Iniciar Uvicorn
-exec uvicorn main:app --host 0.0.0.0 --port 8000
+# Iniciar Uvicorn con logs visibles para runit
+exec uvicorn api:app --host 0.0.0.0 --port 8000 --log-level info
