@@ -2,11 +2,11 @@
 export PATH="$PREFIX/bin:$PATH"
 export PYTHONPATH="$HOME/HormigasAIS-video-intelligence-checker/backend"
 
-# Evita que el servicio crashee si el directorio no existe
+# Cambiar al directorio backend
 cd "$HOME/HormigasAIS-video-intelligence-checker/backend" || exit 1
 
 # Activar entorno virtual
-. "$HOME/HormigasAIS-video-intelligence-checker/backend/venv/bin/activate"
+. venv/bin/activate
 
-# Iniciar Uvicorn con logs visibles para runit
+# Ejecutar Uvicorn con logs visibles para runit
 exec uvicorn api:app --host 0.0.0.0 --port 8000 --log-level info
