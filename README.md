@@ -139,4 +139,7 @@ sv up xoxo
 
 # 7. Verificar el estado del servicio
 sv status xoxo
+
+# 8. ejecutará 
+chmod +x$PREFIX/var/service/xoxo/run
 ```
