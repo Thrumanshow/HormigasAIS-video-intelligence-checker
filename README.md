@@ -102,13 +102,11 @@ uvicorn api:app --reload
 ## 🐜 Configuración del servicio `xoxo` en Termux
 
 Este módulo utiliza **termux-services** para ejecutar XOXO como un servicio persistente en segundo plano.
-
-### 1. Crear la estructura del servicio
 ```bash
+# 1. Crear la estructura del servicio
 mkdir -p "$PREFIX/var/service/XOXO"
-```
-### 2. Crear archivo run
-```bash
+
+# 2. Crear archivo run
 cat > "$PREFIX/var/service/XOXO/run" << 'EOF'
 #!/data/data/com.termux/files/usr/bin/sh
 # Servicio XOXO - HormigasAIS
@@ -117,5 +115,31 @@ while true; do
     sleep 5
 done
 EOF
+
+# 3. Hacer ejecutable el servicio
+chmod +x "$PREFIX/var/service/XOXO/run"
+
+# 4. Normalizar el nombre (termux requiere minúsculas)
+if [ -d "$PREFIX/var/service/XOXO" ]; then
+    echo "Corrigiendo nombre del servicio XOXO → xoxo..."
+    mv "$PREFIX/var/service/XOXO" "$PREFIX/var/service/xoxo"
+fi
+
+# 5. Verificar que termux service este instalado
+if ! command -v sv >/dev/null 2>&1; then
+    echo "⚠️ termux-services no está instalado."
+    echo "Instálalo con: pkg install termux-services"
+fi
+
+# 6. Iniciar el servicio
+sv up xoxo
+
+# 7. Verifica el estado del servicio
+sv status xoxo
 ```
+
+
+
+
+
 
