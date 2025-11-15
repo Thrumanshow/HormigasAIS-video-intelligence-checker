@@ -97,8 +97,25 @@ cd HormigasAIS-video-intelligence-checker
 cd backend
 pip install -r requirements.txt
 uvicorn api:app --reload
+```
 
-# 3. 將服務名稱標準化為小寫
-if [ -d "$PREFIX/var/service/XOXO" ]; then
-    mv "$PREFIX/var/service/XOXO" "$PREFIX/var/service/xoxo"
-fi
+## 🐜 Configuración del servicio `xoxo` en Termux
+
+Este módulo utiliza **termux-services** para ejecutar XOXO como un servicio persistente en segundo plano.
+
+### 1. Crear la estructura del servicio
+```bash
+mkdir -p "$PREFIX/var/service/XOXO"
+```
+### 2. Crear archivo run
+```bash
+cat > "$PREFIX/var/service/XOXO/run" << 'EOF'
+#!/data/data/com.termux/files/usr/bin/sh
+# Servicio XOXO - HormigasAIS
+while true; do
+    echo "XOXO está activo..."
+    sleep 5
+done
+EOF
+```
+
