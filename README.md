@@ -98,10 +98,8 @@ cd backend
 pip install -r requirements.txt
 uvicorn api:app --reload
 ```
+---
 
-## 🐜 Configuración del servicio `xoxo` en Termux
-
-Este módulo utiliza **termux-services** para ejecutar XOXO como un servicio persistente en segundo plano.
 ```bash
 Configuración del servicio xoxo en Termux
 
@@ -114,7 +112,6 @@ mkdir -p "$PREFIX/var/service/XOXO"
 cat > "$PREFIX/var/service/XOXO/run" << 'EOF'
 #!/data/data/com.termux/files/usr/bin/sh
 # Servicio XOXO - HormigasAIS
-
 while true; do
     echo "XOXO está activo..."
     sleep 5
@@ -142,4 +139,3 @@ sv up xoxo
 7. Verificar el estado del servicio
 sv status xoxo
 ```
-
