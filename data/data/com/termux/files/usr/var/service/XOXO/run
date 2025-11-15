@@ -1,12 +1,21 @@
+cat > "$PREFIX/var/service/xoxo/run" << 'EOF'
 #!/data/data/com.termux/files/usr/bin/sh
-export PATH="$PREFIX/bin:$PATH"
-export PYTHONPATH="$HOME/HormigasAIS-video-intelligence-checker/backend"
 
-# Cambiar al directorio backend
-cd "$HOME/HormigasAIS-video-intelligence-checker/backend" || exit 1
+# Activar entorno de Python si existe
+if [ -f "$PREFIX/bin/python" ]; then
+    PY=python
+else
+    PY=python3
+fi
 
-# Activar entorno virtual
-. venv/bin/activate
+LOGFILE="$HOME/xoxo/xoxo.log"
 
-# Ejecutar Uvicorn con logs visibles para runit
-exec uvicorn api:app --host 0.0.0.0 --port 8000 --log-level info
+echo "Iniciando XOXO Python..." >> "$LOGFILE"
+
+# Bucle para asegurar que si Python falla, el servicio reinicie
+while true; do
+    $PY $HOME/xoxo/xoxo.py
+    echo "XOXO Python se reinició tras un fallo..." >> "$LOGFILE"
+    sleep 2
+done
+EOF
