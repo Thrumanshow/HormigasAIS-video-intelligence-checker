@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import random
+# *IMPORTANTE: Al implementar el código soberano, se deben añadir los imports de seguridad.*
 
 app = FastAPI()
 
@@ -18,14 +19,15 @@ app.add_middleware(
 class VideoRequest(BaseModel):
     url: str
 
-# Análisis simulado
+# Análisis simulado (CORRECCIÓN: Usar async def)
 @app.post("/analyze")
-def analyze_video(req: VideoRequest):
+async def analyze_video(req: VideoRequest):
     url = req.url
 
-    # Lógica verosímil simple (placeholder)
+    # Lógica verosímil simple (placeholder de la IA)
     if "tiktok" in url or "shorts" in url:
-        signal = "blue"  # IA generada
+        # Esto simularía una llamada al módulo LBH-M2M
+        signal = "blue"  
     elif "youtube" in url:
         signal = random.choice(["green", "blue"])
     else:
