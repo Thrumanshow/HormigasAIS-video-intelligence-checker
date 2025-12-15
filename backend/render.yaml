@@ -4,6 +4,12 @@ services:
     env: python
     region: oregon
     plan: starter
+   
+    systemPackages:
+      - build-essential 
+      - make
+      - libffi-dev # A veces necesario para criptografía/dependencias de Python
+
     buildCommand: "pip install -r backend/requirements.txt"
     startCommand: "uvicorn backend.api:app --host 0.0.0.0 --port 8000"
     autoDeploy: true
