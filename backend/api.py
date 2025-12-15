@@ -2,9 +2,13 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import random
-# *IMPORTANTE: Al implementar el código soberano, se deben añadir los imports de seguridad.*
 
 app = FastAPI()
+
+@app.get("/")
+def read_root():
+    # Opcional: puede retornar el estado para saber que funciona
+    return {"status": "ok"} 
 
 # Habilitar CORS
 app.add_middleware(
