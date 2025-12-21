@@ -1,40 +1,36 @@
-from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import random
+import datetime
+import os
+
+# Importamos tu nuevo motor LBH
+from adapter.core import XOXOCore
 
 app = FastAPI()
+core = XOXOCore()
+
+class VideoAnalysis(BaseModel):
+    video_id: str
+    url: str
+    mode: str
+    robot_id: str
 
 @app.get("/")
 def read_root():
-    # Opcional: puede retornar el estado para saber que funciona
-    return {"status": "ok"} 
+    return {"status": "ok", "service": "HormigasAIS-LBH-Active"}
 
-# Habilitar CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["https://thrumanshow.github.io"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Modelo de entrada
-class VideoRequest(BaseModel):
-    url: str
-
-# Análisis simulado (CORRECCIÓN: Usar async def)
 @app.post("/analyze")
-async def analyze_video(req: VideoRequest):
-    url = req.url
-
-    # Lógica verosímil simple (placeholder de la IA)
-    if "tiktok" in url or "shorts" in url:
-        # Esto simularía una llamada al módulo LBH-M2M
-        signal = "blue"  
-    elif "youtube" in url:
-        signal = random.choice(["green", "blue"])
-    else:
-        signal = "green"
-
-    return {"signal": signal}
+async def analyze_video(data: VideoAnalysis):
+    # 1. Generar el frame LBH usando el Adaptador
+    lbh_frame = core.send_command({"video_id": data.video_id, "action": "analyze"})
+    
+    # 2. Guardar en la Caja Negra (logs_binarios)
+    log_path = f"logs_binarios/{data.video_id}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.lbh"
+    with open(log_path, "w") as f:
+        f.write(lbh_frame)
+    
+    return {
+        "signal": "green",
+        "lbh_id": data.video_id,
+        "log_saved": True
+    }
