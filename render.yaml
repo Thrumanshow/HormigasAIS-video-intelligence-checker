@@ -1,10 +1,15 @@
 services:
   - type: web
-    name: hormigasais-backend
+    name: xoxo-ai-backend
     env: python
+    region: oregon
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn backend.api:app --host 0.0.0.0 --port 10000
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.10.0
+   
+    systemPackages:
+      - build-essential 
+      - make
+      - libffi-dev
+
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "uvicorn backend.api:app --host 0.0.0.0 --port $PORT"
+    autoDeploy: true
