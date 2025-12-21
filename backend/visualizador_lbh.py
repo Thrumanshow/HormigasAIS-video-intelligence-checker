@@ -3,7 +3,7 @@ import glob
 
 def decodificar_ultimo_log():
     # Buscamos el archivo más reciente en logs_binarios
-    lista_archivos = glob.glob('logs_binarios/*.lbh')
+    lista_archivos = glob.glob('backend/logs_binarios/*.lbh')
     if not lista_archivos:
         print("❌ No se encontraron archivos .lbh")
         return
