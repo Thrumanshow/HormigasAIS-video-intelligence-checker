@@ -1,0 +1,11 @@
+{
+  "module": "VideoIntelligence",
+  "path": "modules/video_intelligence.module.json",
+  "entrypoint": "backend/__init__.py",
+  "scripts": [],
+  "validator": "",
+  "contract_path": "",
+  "status": "registered",
+  "governance": "HUMAN_REQUIRED",
+  "execution": "BLOCKED"
+}

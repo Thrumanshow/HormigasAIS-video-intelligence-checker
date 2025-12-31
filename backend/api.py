@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import datetime
 import os
-from adapter.core import XOXOCore
+from adapter.core import XOXOCore  # Asegúrate de que este módulo exista
 
 app = FastAPI()
 core = XOXOCore()

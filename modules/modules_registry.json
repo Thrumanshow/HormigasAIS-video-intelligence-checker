@@ -1,0 +1,12 @@
+[
+  {
+    "module": "VideoIntelligence",
+    "path": "modules/video_intelligence.module.json",
+    "status": "registered"
+  },
+  {
+    "module": "LBH-EnergySolar",
+    "path": "modules/energy_solar.module.json",
+    "status": "SEALED"
+  }
+]
