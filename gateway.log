@@ -1,0 +1,9 @@
+ERROR:    Error loading ASGI app. Import string "adapter.bots.bot_gateway.app" must be in format "<module>:<attribute>".
+INFO:     Started server process [6275]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:37335 (Press CTRL+C to quit)
+INFO:     127.0.0.1:45284 - "POST /webhook/lbh HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41168 - "POST /webhook/lbh HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41576 - "POST /webhook/lbh HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59790 - "POST /webhook/lbh HTTP/1.1" 200 OK
