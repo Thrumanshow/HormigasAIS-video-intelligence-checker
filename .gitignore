@@ -1,4 +1,7 @@
+/backend/HormigasAIS_Lab/
 backend/hormigasais-lab/
-backend/HormigasAIS_Lab/
+
 __pycache__/
 *.pyc
+
+venv_xoxo/
