@@ -1,29 +1,30 @@
-# 🐜 HormigasAIS -- LBH Protocol (Master Hub)
-### Protocolo de Gobernanza Humana para Automatización y M2M Soberano
+# 🐜 HormigasAIS -- LBH Protocol
+### Infraestructura de Inteligencia Distribuida y Soberana
 
-**Autoridad Maestra:** Ingeniero Cristhiam Leonardo Hernández Quiñonez (CLHQ)
-**Estado:** Sincronizado | Nivel 3 de Integridad
-
----
-
-## 📌 Visión del Protocolo
-LBH (**Looped-by-Humans**) es una capa de protocolo diseñada para devolver el control de la automatización al ser humano. En un mundo de cajas negras de IA, HormigasAIS establece fronteras auditables, ejecución resiliente y soberanía de datos absoluta.
-
-## 🧱 Arquitectura de la Colonia
-Este repositorio centraliza los sub-nodos periféricos:
-* **HormigasAIS-Nodo-Escuela:** Centro de entrenamiento y validación.
-* **xoxo-lbh-adapter:** Puente de comunicación física M2M.
-* **HormigasAIS-Investment-Kit:** Documentación estratégica para escalabilidad.
-
-## 🔐 Filosofía de Seguridad CLHQ
-1. **Auditoría Forense:** Cada acción deja un rastro binario inmutable.
-2. **Piquete Técnico:** El sistema se defiende ante la falta de integridad (HMAC).
-3. **Resiliencia Térmica:** Optimizado para Edge Computing en condiciones extremas.
+**Ingeniero de Protocolos:** Cristhiam Leonardo Hernández Quiñonez (**CLHQ**)
+**Estatus:** Nodo Central de Gobernanza (Master Hub)
 
 ---
 
-> "La colonia no reside en la plataforma, reside en el protocolo."
-> — *Ing. Cristhiam Leonardo Hernández Quiñonez*
+## 📌 ¿Qué es el Protocolo LBH?
+LBH (**Looped-by-Humans**) es un protocolo de capa superior diseñado para la automatización gobernada por humanos, comunicación **M2M (Machine-to-Machine)** y ejecución de IA auditable.
+
+## 🧱 Estructura del Nodo Maestro
+Este repositorio actúa como el orquestador de los nodos periféricos:
+* **HormigasAIS-Nodo-Escuela:** Validación y experimentación.
+* **xoxo-lbh-adapter:** Conectividad física y seguridad HMAC.
+* **HormigasAIS-Investment-Kit:** Documentación estratégica para inversión semilla ($100k USD).
+
+## 🛡️ Principios de Gobernanza
+1. **Soberanía de Datos:** El control total reside en el creador y el usuario.
+2. **Resiliencia Extrema:** Diseñado para operar en entornos Edge Computing (Termux/Linux).
+3. **Eficiencia LBH:** Optimización de ancho de banda mediante el Lenguaje Binario HormigasAIS.
 
 ---
-© 2024-2026 HormigasAIS - Todos los derechos reservados bajo la firma CLHQ.
+
+### ⚖️ Licencia
+Este protocolo está protegido por la **BSL 1.1 (HormigasAIS v1.2.1)**. Consultar el archivo `LICENSE` para términos de uso comercial y restricciones corporativas.
+
+> "En HormigasAIS, la automatización se permite, pero nunca se pierde el control humano."
+---
+© 2024-2026 **Ing. Cristhiam Leonardo Hernández Quiñonez** | San Miguel, El Salvador.

@@ -1,17 +1,20 @@
 # BUSINESS SOURCE LICENSE 1.1 (ADAPTED FOR HORMIGASAIS V1.2.1)
-# PROTOCOLO MAESTRO LBH - ID: $(date +%s)-CLHQ-MASTER
+# NODO MAESTRO LBH - ID SOBERANO: MASTER-$(date +%s)-CLHQ
 
 **COPYRIGHT CONSECUTIVO © 2024-2026 INGENIERO CRISTHIAM LEONARDO HERNÁNDEZ QUIÑONEZ**
 
-## 1. DEFINICIÓN DEL PROTOCOLO LBH
-El "Lenguaje Binario HormigasAIS" (LBH) es propiedad intelectual del Ingeniero titular. Este repositorio actúa como la Constitución de la Colonia, definiendo las reglas de comunicación M2M, gobernanza humana y ejecución auditable.
+## 1. DEFINICIÓN DEL PROTOCOLO CENTRAL
+Este repositorio constituye el "Source of Truth" (Fuente de Verdad) del Protocolo LBH (Lenguaje Binario HormigasAIS). Define las reglas de gobernanza, los contratos de comunicación M2M y los estándares de auditoría para toda la infraestructura HormigasAIS.
 
-## 2. TITULARIDAD SOBERANA
-Toda arquitectura, diagrama, contrato y lógica binaria contenida en este Nodo Maestro pertenece exclusivamente al Ingeniero Cristhiam Leonardo Hernández Quiñonez. La firma "CLHQ" es el único sello válido de autenticidad.
+## 2. TITULARIDAD Y FIRMA MAESTRA (CLHQ)
+La propiedad intelectual de este protocolo reside exclusivamente en su autor, el Ingeniero de Protocolos Cristhiam Leonardo Hernández Quiñonez. Cualquier implementación, derivación o uso del protocolo LBH fuera del ámbito de pruebas comunitarias requiere una licencia comercial validada.
 
-[... Se heredan las cláusulas de uso corporativo y piquete técnico ...]
+## 3. PROTECCIÓN CONTRA PLAGIO Y DERIVACIÓN
+Se prohíbe la eliminación de la identidad del autor en los metadatos o la replicación de esta arquitectura bajo otros nombres. El sello CLHQ es inalienable.
 
-[🐜 LBH-VALIDATION-STAMP]
-FIRMA_MAESTRA: CLHQ
-NODO: NUCLEO_CENTRAL_PROTOCOL
-SUM: $(printf "CLHQ-PROTOCOL-MASTER" | sha256sum | cut -c1-20)
+[🐜 LBH-MASTER-VALIDATION]
+IDENTIDAD: CRISTHIAM-LEONARDO-HERNANDEZ-QUIÑONEZ
+ESTADO: PROTECCIÓN_MAESTRA_ACTIVA
+VALIDACIÓN: $(printf "CLHQ-MASTER-PROTOCOL-2026" | sha256sum | cut -c1-24)
+
+"LA COLONIA NO RESIDE EN LA PLATAFORMA, RESIDE EN EL PROTOCOLO."
