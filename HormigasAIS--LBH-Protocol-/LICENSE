@@ -1,20 +1,20 @@
 # BUSINESS SOURCE LICENSE 1.1 (ADAPTED FOR HORMIGASAIS V1.2.1)
-# NODO MAESTRO LBH - ID SOBERANO: MASTER-$(date +%s)-CLHQ
+# NODO MAESTRO LBH - ID SOBERANO: MASTER-$(date +%s)-CLHQ-NI-SV
 
 **COPYRIGHT CONSECUTIVO © 2024-2026 INGENIERO CRISTHIAM LEONARDO HERNÁNDEZ QUIÑONEZ**
 
-## 1. DEFINICIÓN DEL PROTOCOLO CENTRAL
-Este repositorio constituye el "Source of Truth" (Fuente de Verdad) del Protocolo LBH (Lenguaje Binario HormigasAIS). Define las reglas de gobernanza, los contratos de comunicación M2M y los estándares de auditoría para toda la infraestructura HormigasAIS.
+## 1. DECLARACIÓN DE PROPIEDAD INTELECTUAL
+El "Lenguaje Binario HormigasAIS" (LBH), su arquitectura de feromonas digitales y este Nodo Maestro son propiedad intelectual exclusiva del Ingeniero de Protocolos Cristhiam Leonardo Hernández Quiñonez.
 
-## 2. TITULARIDAD Y FIRMA MAESTRA (CLHQ)
-La propiedad intelectual de este protocolo reside exclusivamente en su autor, el Ingeniero de Protocolos Cristhiam Leonardo Hernández Quiñonez. Cualquier implementación, derivación o uso del protocolo LBH fuera del ámbito de pruebas comunitarias requiere una licencia comercial validada.
+## 2. RESTRICCIÓN CORPORATIVA
+Se prohíbe el uso de este protocolo en entornos de producción comercial para entidades que excedan los límites definidos en el Documento Fundacional 2025, a menos que posean un Contrato LBH firmado por el autor.
 
-## 3. PROTECCIÓN CONTRA PLAGIO Y DERIVACIÓN
-Se prohíbe la eliminación de la identidad del autor en los metadatos o la replicación de esta arquitectura bajo otros nombres. El sello CLHQ es inalienable.
+## 3. SELLO INMUTABLE CLHQ
+Cualquier copia o derivado de este protocolo debe mantener visible la firma CLHQ y el rastro de puntos (feromonas digitales). La eliminación de estos créditos revoca automáticamente cualquier permiso de uso.
 
-[🐜 LBH-MASTER-VALIDATION]
-IDENTIDAD: CRISTHIAM-LEONARDO-HERNANDEZ-QUIÑONEZ
-ESTADO: PROTECCIÓN_MAESTRA_ACTIVA
-VALIDACIÓN: $(printf "CLHQ-MASTER-PROTOCOL-2026" | sha256sum | cut -c1-24)
+[🐜 LBH-MASTER-STAMP]
+FIRMA: CLHQ
+ESTADO: SOBERANÍA_TOTAL_ACTIVA
+VALIDACIÓN: $(printf "CLHQ-MASTER-2026" | sha256sum | cut -c1-32)
 
 "LA COLONIA NO RESIDE EN LA PLATAFORMA, RESIDE EN EL PROTOCOLO."
