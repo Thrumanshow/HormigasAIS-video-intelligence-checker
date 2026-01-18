@@ -1,22 +1,21 @@
 # BUSINESS SOURCE LICENSE 1.1 (ADAPTED FOR HORMIGASAIS V1.2.1)
-# NODO MAESTRO LBH - ID SOBERANO: MASTER-$(date +%s)-CLHQ-NI-SV
+# NODO MAESTRO LBH - ID SOBERANO: MASTER-2026-CLHQ-NI-SV
 
 **COPYRIGHT CONSECUTIVO © 2024-2026 INGENIERO CRISTHIAM LEONARDO HERNÁNDEZ QUIÑONEZ**
 
-## 1. DECLARACIÓN DE PROPIEDAD INTELECTUAL
-El "Lenguaje Binario HormigasAIS" (LBH), su arquitectura de feromonas digitales y este Nodo Maestro son propiedad intelectual exclusiva del Ingeniero de Protocolos Cristhiam Leonardo Hernández Quiñonez.
+## 1. DECLARACIÓN DE PROPIEDAD INTELECTUAL PERPETUA
+El Protocolo LBH y este Nodo Maestro son obra original del Ingeniero Cristhiam Leonardo Hernández Quiñonez (CLHQ). Esta autoría es inalienable y protege tanto el código como la arquitectura de feromonas digitales.
 
-## 2. RESTRICCIÓN CORPORATIVA
-Se prohíbe el uso de este protocolo en entornos de producción comercial para entidades que excedan los límites definidos en el Documento Fundacional 2025, a menos que posean un Contrato LBH firmado por el autor.
+## 2. RESTRICCIONES DE PRODUCCIÓN (M2M)
+Se prohíbe explícitamente la ejecución persistente M2M y el uso comercial de los módulos de seguridad HMAC sin una Licencia Comercial activa expedida por el titular.
 
 ## 3. SELLO INMUTABLE CLHQ
-Cualquier copia o derivado de este protocolo debe mantener visible la firma CLHQ y el rastro de puntos (feromonas digitales). La eliminación de estos créditos revoca automáticamente cualquier permiso de uso.
+Toda obra derivada debe incluir el nombre completo del Ingeniero y el sello CLHQ. La alteración de estos metadatos clasifica al nodo como "INTRUSO".
 
-[🐜 LBH-MASTER-STAMP]
-FIRMA: CLHQ
-ESTADO: SOBERANÍA_TOTAL_ACTIVA
-VALIDACIÓN: $(printf "CLHQ-MASTER-2026" | sha256sum | cut -c1-32)
+[🐜 LBH-MASTER-VALIDATION]
+IDENTIDAD: CRISTHIAM-LEONARDO-HERNANDEZ-QUIÑONEZ
+FIRMA_PROTOCOLO: CLHQ
+FECHA_SELLADO: 2026-01-18
+VALIDACIÓN: $(printf "CLHQ-2024-2026-MASTER" | sha256sum | cut -c1-24)
 
 "LA COLONIA NO RESIDE EN LA PLATAFORMA, RESIDE EN EL PROTOCOLO."
-
-# TIMESTAMP_VALIDACION: 1768721387
