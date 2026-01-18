@@ -1,0 +1,17 @@
+# BUSINESS SOURCE LICENSE 1.1 (ADAPTED FOR HORMIGASAIS V1.2.1)
+# PROTOCOLO MAESTRO LBH - ID: $(date +%s)-CLHQ-MASTER
+
+**COPYRIGHT CONSECUTIVO © 2024-2026 INGENIERO CRISTHIAM LEONARDO HERNÁNDEZ QUIÑONEZ**
+
+## 1. DEFINICIÓN DEL PROTOCOLO LBH
+El "Lenguaje Binario HormigasAIS" (LBH) es propiedad intelectual del Ingeniero titular. Este repositorio actúa como la Constitución de la Colonia, definiendo las reglas de comunicación M2M, gobernanza humana y ejecución auditable.
+
+## 2. TITULARIDAD SOBERANA
+Toda arquitectura, diagrama, contrato y lógica binaria contenida en este Nodo Maestro pertenece exclusivamente al Ingeniero Cristhiam Leonardo Hernández Quiñonez. La firma "CLHQ" es el único sello válido de autenticidad.
+
+[... Se heredan las cláusulas de uso corporativo y piquete técnico ...]
+
+[🐜 LBH-VALIDATION-STAMP]
+FIRMA_MAESTRA: CLHQ
+NODO: NUCLEO_CENTRAL_PROTOCOL
+SUM: $(printf "CLHQ-PROTOCOL-MASTER" | sha256sum | cut -c1-20)
